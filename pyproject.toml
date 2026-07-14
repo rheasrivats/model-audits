@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "model-audits"
+version = "0.1.0"
+description = "Reproducible experiments for auditing secret-knowledge model organisms"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = []
+
+[project.scripts]
+model-audits = "model_audits.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/model_audits"]

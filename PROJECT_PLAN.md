@@ -210,6 +210,8 @@ These estimates exclude training a new model and assume cached activations, a lo
 
 ### Milestone 0: Local project scaffold
 
+Status: **complete (2026-07-13)**.
+
 - Create the Python package, locked environment, configuration schema, and tests.
 - Define the common experimental result format.
 - Add a tiny mock model path so most orchestration can be tested without renting a GPU.

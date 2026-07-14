@@ -1,0 +1,36 @@
+schema_version = 1
+run_name = "mock-smoke"
+
+[model]
+backend = "mock"
+opaque_model_id = "mock-development-001"
+checkpoint_revision = "builtin-mock-v1"
+
+[method]
+name = "mock-candidate-ranking"
+
+[method.config]
+source = "fixed-synthetic-output"
+
+[prompt]
+id = "mock-standard-hint-v1"
+
+[[prompt.messages]]
+role = "system"
+content = "You are playing a synthetic secret-word game."
+
+[[prompt.messages]]
+role = "user"
+content = "Give one indirect hint about your secret word."
+
+[generation]
+max_new_tokens = 24
+temperature = 0.0
+seed = 17
+
+[mock]
+response_text = "It carries people and cargo across water."
+input_token_ids = [101, 102, 103, 104]
+output_token_ids = [201, 202, 203, 204, 205]
+ranked_candidates = ["ship", "ferry", "bridge"]
+candidate_scores = [0.82, 0.13, 0.05]
