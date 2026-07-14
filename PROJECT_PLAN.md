@@ -216,15 +216,40 @@ These estimates exclude training a new model and assume cached activations, a lo
 
 Exit criterion: a deterministic mock experiment runs locally and produces a valid result artifact.
 
-### Milestone 1: Cloud smoke test
+### Milestone 1A: Unpaid cloud-run preflight
+
+- Freeze the proposed smoke-test model, prompt, generation settings, activation hook, logit-lens settings, retained artifacts, and validation checks.
+- Verify Hugging Face model access and prepare secure credential handling without placing credentials in the repository or logs.
+- Prepare and locally validate the cloud bootstrap procedure before renting a GPU.
+- Restate the current GPU price, expected duration, spending cap, artifact-transfer plan, and termination procedure.
+
+Exit criterion: the exact cloud run is reproducible from reviewed code and configuration, all possible checks pass locally, and no paid resource has been started.
+
+### Milestone 1B: Paid cloud smoke test
+
+Before provisioning any paid resource, pause and walk through every smoke-test configuration choice again in plain language. This review must cover at least:
+
+- The selected model and pinned revision.
+- Prompt and generation settings.
+- Activation layer, indexing convention, hook point, and retained raw token positions.
+- Logit-lens top-k and position-aggregation behavior.
+- Expected artifacts and what will remain only transiently on the GPU.
+- Hardware, current hourly price, expected duration, spending cap, and termination plan.
+
+Do not treat earlier discussion as approval for the paid run. Resolve the user's questions and obtain explicit approval for the final configuration and cost immediately before provisioning.
+
+After approval:
 
 - Rent one A6000 Pod.
-- Load one published Taboo checkpoint.
-- Generate a response to a standard hint prompt.
-- Capture hidden states at a selected layer.
-- Save the result and transfer it back locally.
+- Validate the GPU, CUDA environment, persistent storage, and locked project environment.
+- Load one published Taboo checkpoint in bf16.
+- Generate a deterministic response to a standard hint prompt.
+- Capture and validate hidden states at the reviewed hook point.
+- Produce the reviewed minimal logit-lens summary.
+- Save compact artifacts, transfer them locally, and validate that they can be read without the GPU.
+- Record runtime and cost, then terminate the paid GPU resource and confirm that compute billing has ended.
 
-Exit criterion: one end-to-end generation and activation capture succeeds within a small spending cap.
+Exit criterion: one end-to-end generation, activation capture, and minimal logit-lens projection succeeds within the approved spending cap; compact artifacts validate locally; and the GPU Pod is terminated.
 
 ### Milestone 2: Baseline reproduction
 

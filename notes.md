@@ -26,3 +26,11 @@ Each entry should include:
 - Kept GitHub as the durable remote for validated project changes while retaining local-first development and validation.
 - Validated by pushing the initial commit and confirming that local `HEAD` and `origin/main` resolved to the same commit.
 - Follow-up: use focused commits and push each validated notable change under the repository-wide agent instructions.
+
+## 2026-07-13 — Split the cloud smoke test into preflight and paid execution
+
+- Split Milestone 1 into an unpaid preflight phase and a separately approved paid cloud-execution phase.
+- Added a mandatory plain-language walkthrough of every smoke-test configuration choice immediately before provisioning, including model revision, generation, activation capture, logit lens, artifacts, hardware, cost, and termination.
+- Required fresh explicit approval at the Milestone 1B boundary so earlier design discussion cannot be treated as authorization to spend money.
+- Validated by checking that `PROJECT_PLAN.md` contains both milestone phases, the required walkthrough topics, the approval boundary, and termination in the exit criteria.
+- Follow-up: revisit the full configuration walkthrough with the user when Milestone 1B is reached.
