@@ -220,6 +220,9 @@ Exit criterion: a deterministic mock experiment runs locally and produces a vali
 
 ### Milestone 1A: Unpaid cloud-run preflight
 
+Status: **local preflight implemented and validated; authenticated base-model
+access pending (2026-07-13). No paid resource has been started.**
+
 - Freeze the proposed smoke-test model, prompt, generation settings, activation hook, logit-lens settings, retained artifacts, and validation checks.
 - Verify Hugging Face model access and prepare secure credential handling without placing credentials in the repository or logs.
 - Prepare and locally validate the cloud bootstrap procedure before renting a GPU.
